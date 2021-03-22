@@ -6,6 +6,7 @@ var app=new Vue({
         image:"assets/vmSocks-green-onWhite.jpg",
         cb:"color-blue",
         href: "index2.html",
+        inventory : 13
     }
 })
 
