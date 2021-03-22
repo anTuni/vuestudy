@@ -11,3 +11,8 @@ options 는  자바스크립트 객체 형태로 전달한다.
 {{}} expression
 html에서 자바스크립트 변수를 사용 가능함.
 자바스크립트 연산 가능
+
+2.Attribute Binding
+Vue instant의 data를 html 요소의 속성값을 사용할 수 있음
+attribute 앞에 v-bind: 를 붙이거나 짧게는 :를 붙이고 그 값으로 data object의 property를 넘겨주면 가능하다.
+property로 'class'로 사용할 수 없음.

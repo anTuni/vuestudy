@@ -5,11 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Practice</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="app" class="">
-        <h1>{{product}}</h1>
-        <h2>{{`${product}\n ${description}`}}</h2>
+    <div class="nav-var"></div>
+    <div id="app">
+        <a :href="href">
+            <h1 :class="cb">{{product}}</h1>
+            <h2>{{`${product}\n ${description}`}}</h2>
+            <h2>{{`class is ${class}`}}</h2>
+        </a>
     </div>
     <div id="app2" class="product">
         <h1>{{product}}</h1>
@@ -22,6 +27,7 @@
     <script>
         setTimeout(()=>{
             app.product = "Coat"
+            app.cb = "#000"
         },2000)
     </script>
 </body>
