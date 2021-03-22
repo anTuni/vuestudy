@@ -19,3 +19,8 @@ property로 'class'로 사용할 수 없음.
 
 3.Conditional rendering
 v-if,v-else-if,v-if 속성으로 Vue instance의 데이터에 따라 렌더링이 가능함
+v-show 속성으로 visibility(style의 display 값(none or block))를 조절할 수 있음
+
+4.list rendering
+Vue data에 array 타입의 자료를 가지고 반복문을 사용할 수 있음
+속성 이름 v-for ="data in array"
