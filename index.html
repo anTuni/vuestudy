@@ -15,11 +15,20 @@
         </div>
         <div class="product-info">
             <h1 :class="cb">{{product}}</h1>
+            <p v-show="onSale">on Sale!</p>
             <p>{{`${inventory} 개 남음`}}</p>
             <p v-if="inventory >10">In Stock</p>
             <p v-else-if="inventory<=10 && inventory>0">Almost sold out Hurry!!</p>
             <p v-else>Out of Stock</p>
-            <p></p>
+            <ul>
+                <li v-for="content in details">{{content}}</li>
+            </ul>
+            <ul>
+                <li v-for="variant in variants" value="variant.variantsId">{{variant.color}}</option>
+            </ul>
+            <ul>
+                <li v-for="size in sizes" value="size">{{size}}</option>
+            </ul>
             <h2>{{`${product}\n ${description}`}}</h2>
         </div>
     </div>
@@ -34,7 +43,7 @@
     <script>
         setInterval(() => {
             if(app.inventory>0){
-                app.inventory = app.inventory -1;
+                // app.inventory = app.inventory -1;
             }    
         }, 1000);
     </script>

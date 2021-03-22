@@ -6,7 +6,24 @@ var app=new Vue({
         image:"assets/vmSocks-green-onWhite.jpg",
         cb:"color-blue",
         href: "index2.html",
-        inventory : 13
+        inventory : 13,
+        onSale : true,
+        details:["80% cotton","20% polyester","made in Korea"],
+        variants:[
+            {
+                color:"blue",
+                variantsId:"1"
+            },
+            {
+                color:"green",
+                variantsId:"2"
+            },
+            {
+                color:"red",
+                variantsId:"3"
+            },
+        ],
+        sizes:["S",'M','L']
     }
 })
 
