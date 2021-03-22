@@ -3,9 +3,9 @@ var app=new Vue({
     data:{
         product : 'Socks',
         description : 'are smells good',
+        image:"assets/vmSocks-green-onWhite.jpg",
         cb:"color-blue",
         href: "index2.html",
-        class: "index",
     }
 })
 

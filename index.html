@@ -8,15 +8,19 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="nav-var"></div>
-    <div id="app">
-        <a :href="href">
-            <h1 :class="cb">{{product}}</h1>
+    <div class="nav-bar"></div>
+    <div id="app" class="product">
+        <div class="product-image">
+            <img :src="image" />
+        </div>
+        <div class="product-info">
+            <a :href="href">
+                <h1 :class="cb">{{product}}</h1>
+            </a>
             <h2>{{`${product}\n ${description}`}}</h2>
-            <h2>{{`class is ${class}`}}</h2>
-        </a>
+        </div>
     </div>
-    <div id="app2" class="product">
+    <div id="app2">
         <h1>{{product}}</h1>
         <h2>{{description}}</h2>
         <h2>{{value1+value2}}</h2>
