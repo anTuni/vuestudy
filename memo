@@ -1,0 +1,13 @@
+1.Vue instant
+
+var name = new Vue({options}) 의 형태로 인스턴스를 생성한다
+options 는  자바스크립트 객체 형태로 전달한다.
+주요 property
+{
+    el:"#id",  => dom element의 아이디 or 클래스
+    data : {}  => dom element에서 사용할 변수, 데이터
+}
+
+{{}} expression
+html에서 자바스크립트 변수를 사용 가능함.
+자바스크립트 연산 가능
