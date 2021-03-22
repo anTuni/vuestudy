@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Practice</title>
+</head>
+<body>
+    <div id="app" class="">
+        <h1>{{product}}</h1>
+        <h2>{{`${product}\n ${description}`}}</h2>
+    </div>
+    <div id="app2" class="product">
+        <h1>{{product}}</h1>
+        <h2>{{description}}</h2>
+        <h2>{{value1+value2}}</h2>
+        <h2>{{value1+value2 == 2 ? "true" : "false"}}</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+    <script>
+        setTimeout(()=>{
+            app.product = "Coat"
+        },2000)
+    </script>
+</body>
+</html>
