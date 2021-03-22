@@ -16,3 +16,6 @@ html에서 자바스크립트 변수를 사용 가능함.
 Vue instant의 data를 html 요소의 속성값을 사용할 수 있음
 attribute 앞에 v-bind: 를 붙이거나 짧게는 :를 붙이고 그 값으로 data object의 property를 넘겨주면 가능하다.
 property로 'class'로 사용할 수 없음.
+
+3.Conditional rendering
+v-if,v-else-if,v-if 속성으로 Vue instance의 데이터에 따라 렌더링이 가능함
