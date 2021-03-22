@@ -1,29 +1,42 @@
 var app=new Vue({
     el :'#app',
     data:{
+        name: appName,
         product : 'Socks',
         description : 'are smells good',
         image:"assets/vmSocks-green-onWhite.jpg",
         cb:"color-blue",
         href: "index2.html",
         inventory : 13,
+        inStock :true,
         onSale : true,
         details:["80% cotton","20% polyester","made in Korea"],
         variants:[
             {
-                color:"blue",
-                variantsId:"1"
-            },
-            {
                 color:"green",
-                variantsId:"2"
+                variantsId:"2",
+                image:"assets/vmSocks-green-onWhite.jpg"
             },
             {
-                color:"red",
-                variantsId:"3"
+                color:"blue",
+                variantsId:"1",
+                image:"assets/vmSocks-blue-onWhite.jpg"
             },
         ],
-        sizes:["S",'M','L']
+        sizes:["S",'M','L'],
+        cart:0,
+    },
+    methods:{
+        addToCart : function(){
+            this.cart +=1;
+            console.log("You added product to this")
+        },
+        changeProduactColor(image){
+            this.image=image;
+        },
+        removeFromCart(){
+            this.cart -=1;
+        }
     }
 })
 

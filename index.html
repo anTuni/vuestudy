@@ -19,17 +19,31 @@
             <p>{{`${inventory} 개 남음`}}</p>
             <p v-if="inventory >10">In Stock</p>
             <p v-else-if="inventory<=10 && inventory>0">Almost sold out Hurry!!</p>
-            <p v-else>Out of Stock</p>
+            <p v-else :class="{textDeco : !inStock}">Out of Stock</p>
             <ul>
                 <li v-for="content in details">{{content}}</li>
             </ul>
+            <div v-for="variant in variants" 
+                 :key="variant.variantsId"
+                 class="color-box"
+                 :style="{backgroundColor:variant.color}"
+                 @mouseover="changeProduactColor(variant.image)" 
+            ></div>
             <ul>
-                <li v-for="variant in variants" value="variant.variantsId">{{variant.color}}</option>
-            </ul>
-            <ul>
-                <li v-for="size in sizes" value="size">{{size}}</option>
+                <option v-for="size in sizes" value="size">{{size}}</option>
             </ul>
             <h2>{{`${product}\n ${description}`}}</h2>
+            <div class="d-flex">
+                <button 
+                    @click="addToCart" 
+                    :disabled="!inStock"
+                    :class="{disabledButton : !inStock}"
+                    >Add to Cart</button>
+                <button @click="removeFromCart">remove from Cart</button>
+                <div class="btn-style">
+                    <p>Cart({{cart}})</p>
+                </div>
+            </div>
         </div>
     </div>
     <div id="app2">
@@ -39,13 +53,17 @@
         <h2>{{value1+value2 == 2 ? "true" : "false"}}</h2>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="main.js"></script>
     <script>
+        const appName = "Vue Pratice"
         setInterval(() => {
-            if(app.inventory>0){
-                // app.inventory = app.inventory -1;
+            if(app.inventory>=0){
+                app.inventory = app.inventory -1;
+                if(app.inventory ==0){
+                    app.inStock = false
+                }
             }    
         }, 1000);
     </script>
+    <script src="main.js"></script>
 </body>
 </html>
