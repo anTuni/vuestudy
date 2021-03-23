@@ -1,25 +1,25 @@
 var app=new Vue({
     el :'#app',
     data:{
-        name: appName,
+        brand : 'Vue Mastery', 
         product : 'Socks',
         description : 'are smells good',
-        image:"assets/vmSocks-green-onWhite.jpg",
+        selectedVariant : 0,
         cb:"color-blue",
         href: "index2.html",
-        inventory : 13,
-        inStock :true,
         onSale : true,
         details:["80% cotton","20% polyester","made in Korea"],
         variants:[
             {
                 color:"green",
                 variantsId:"2",
+                variantsQuantity:10,
                 image:"assets/vmSocks-green-onWhite.jpg"
             },
             {
                 color:"blue",
                 variantsId:"1",
+                variantsQuantity:0,
                 image:"assets/vmSocks-blue-onWhite.jpg"
             },
         ],
@@ -31,21 +31,31 @@ var app=new Vue({
             this.cart +=1;
             console.log("You added product to this")
         },
-        changeProduactColor(image){
-            this.image=image;
+        changeProduactColor(index){
+            this.selectedVariant=index;
         },
         removeFromCart(){
             this.cart -=1;
         }
-    }
-})
-
-var app2=new Vue({
-    el :'#app2',
-    data:{
-        product : 'app2',
-        value1 : 1,
-        value2 : 2,
-        description : 'app2 is warm'
+    },
+    computed:{
+        title(){
+            return this.brand +' '+this.product
+        },
+        image(){
+            return this.variants[this.selectedVariant].image
+        },
+        inventory(){
+            return this.variants[this.selectedVariant].variantsQuantity
+        },
+        inStock(){
+            return this.variants[this.selectedVariant].variantsQuantity>0
+        },
+        saleNow(){
+            return this.onSale ?  this.brand +' '+this.product + ' is ' + "Now Sale" : "No Sale" 
+        },
+        classObj(){
+            return {disabledButton : !this.inStock}
+        }
     }
 })

@@ -14,8 +14,8 @@
             <img :src="image" />
         </div>
         <div class="product-info">
-            <h1 :class="cb">{{product}}</h1>
-            <p v-show="onSale">on Sale!</p>
+            <h1 :class="cb">{{title}}</h1>
+            <p >{{saleNow}}</p>
             <p>{{`${inventory} 개 남음`}}</p>
             <p v-if="inventory >10">In Stock</p>
             <p v-else-if="inventory<=10 && inventory>0">Almost sold out Hurry!!</p>
@@ -23,11 +23,11 @@
             <ul>
                 <li v-for="content in details">{{content}}</li>
             </ul>
-            <div v-for="variant in variants" 
+            <div v-for="(variant,index) in variants" 
                  :key="variant.variantsId"
                  class="color-box"
                  :style="{backgroundColor:variant.color}"
-                 @mouseover="changeProduactColor(variant.image)" 
+                 @mouseover="changeProduactColor(index)" 
             ></div>
             <ul>
                 <option v-for="size in sizes" value="size">{{size}}</option>
@@ -37,7 +37,7 @@
                 <button 
                     @click="addToCart" 
                     :disabled="!inStock"
-                    :class="{disabledButton : !inStock}"
+                    :class="classObj"
                     >Add to Cart</button>
                 <button @click="removeFromCart">remove from Cart</button>
                 <div class="btn-style">
@@ -46,24 +46,7 @@
             </div>
         </div>
     </div>
-    <div id="app2">
-        <h1>{{product}}</h1>
-        <h2>{{description}}</h2>
-        <h2>{{value1+value2}}</h2>
-        <h2>{{value1+value2 == 2 ? "true" : "false"}}</h2>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-        const appName = "Vue Pratice"
-        setInterval(() => {
-            if(app.inventory>=0){
-                app.inventory = app.inventory -1;
-                if(app.inventory ==0){
-                    app.inStock = false
-                }
-            }    
-        }, 1000);
-    </script>
     <script src="main.js"></script>
 </body>
 </html>
