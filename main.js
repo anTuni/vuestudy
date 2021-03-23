@@ -42,14 +42,17 @@ var app=new Vue({
         title(){
             return this.brand +' '+this.product
         },
+        selectedObj(){
+            return this.variants[this.selectedVariant]
+        },
         image(){
-            return this.variants[this.selectedVariant].image
+            return this.selectedObj.image
         },
         inventory(){
-            return this.variants[this.selectedVariant].variantsQuantity
+            return this.selectedObj.variantsQuantity
         },
         inStock(){
-            return this.variants[this.selectedVariant].variantsQuantity>0
+            return this.inventory>0
         },
         saleNow(){
             return this.onSale ?  this.brand +' '+this.product + ' is ' + "Now Sale" : "No Sale" 
