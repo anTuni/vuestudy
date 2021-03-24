@@ -54,7 +54,7 @@ Vue.component('product',{
                 {
                     color:"green",
                     variantsId:"2",
-                    variantsQuantity:10,
+                    variantsQuantity:11,
                     image:"assets/vmSocks-green-onWhite.jpg"
                 },
                 {
@@ -62,6 +62,12 @@ Vue.component('product',{
                     variantsId:"1",
                     variantsQuantity:0,
                     image:"assets/vmSocks-blue-onWhite.jpg"
+                },
+                {
+                    color:"red",
+                    variantsId:"3",
+                    variantsQuantity:3,
+                    image:"assets/vmSocks-red-onWhite.jpg"
                 },
             ],
             sizes:["S",'M','L'],
@@ -125,7 +131,7 @@ Vue.component('colorbox',{
     },
     template:`
     <div>
-        <div v-for="(variant,index) in variantss" 
+        <div v-for="(variant,index) in variants" 
             :key="variant.variantsId"
             class="color-box"
             :style="{backgroundColor:variant.color}"
@@ -133,19 +139,6 @@ Vue.component('colorbox',{
         ></div>
     </div>
     `,
-    data(){
-        return {}
-    },
-    methods:{
-
-    },
-    computed:{
-        variantss(){
-            console.log("this.variants "+this.variants)
-            return this.variants
-        },
-    }
-
 })
 var app=new Vue({
     el :'#app',
