@@ -21,21 +21,18 @@ Vue.component('product',{
                 <ul>
                     <li v-for="content in details">{{content}}</li>
                 </ul>
-                <colorbox :variants="variants" :onMuseMethod="changeMethod"></colorbox>
+                <colorbox :variants="variants" @on-mouse="changeProduactColor"></colorbox>
                 <ul>
                     <option v-for="size in sizes" value="size">{{size}}</option>
                 </ul>
                 <h2>{{product}} {{description}}</h2>
                 <div class="d-flex">
                     <button 
-                        @click="addToCart" 
+                        @click="emitAddToCart" 
                         :disabled="!inStock"
                         :class="classObj"
                         >Add to Cart</button>
-                    <button @click="removeFromCart">remove from Cart</button>
-                    <div class="btn-style">
-                        <p>Cart({{cart}})</p>
-                    </div>
+                    <button @click="emitRemoveFromCart">remove from Cart</button>
                 </div>
             </div>
         </div>
@@ -76,14 +73,16 @@ Vue.component('product',{
     }
     ,
     methods:{
-        addToCart : function(){
-            this.cart +=1;
+        emitAddToCart : function(){
+            this.$emit('add-to-cart')
             console.log("You added product to this")
         },
         changeProduactColor(index){
             this.selectedVariant=index;
         },
-        removeFromCart(){
+        emitRemoveFromCart(){
+            this.$emit('rm-to-cart')
+
             this.cart -=1;
         }
     },
@@ -111,9 +110,6 @@ Vue.component('product',{
         },
         shipping(){
             return this.premium ? 'Free': '$2.99';
-        },
-        changeMethod(){
-            return this.changeProduactColor
         }
 
     }
@@ -130,19 +126,33 @@ Vue.component('colorbox',{
         },
     },
     template:`
-    <div>
+    <div class="d-flex">
         <div v-for="(variant,index) in variants" 
             :key="variant.variantsId"
             class="color-box"
             :style="{backgroundColor:variant.color}"
-            @mouseover="onMuseMethod(index)" 
+            @mouseover="emitOnMouse(index)" 
         ></div>
     </div>
     `,
+    methods:{
+        emitOnMouse(index){
+            this.$emit('on-mouse',index);
+        }
+    }
 })
 var app=new Vue({
     el :'#app',
     data : {
-        premium : false
+        premium : false,
+        cart:0
+    },
+    methods:{
+        addToCart(){
+            this.cart+=1
+        },
+        rmFromCart(){
+            this.cart-=1
+        },
     }
 })

@@ -44,6 +44,10 @@ Computed property :
 1) data property로 재구성한 값을 사용할 수 있다.
 
 Component :
-1)요소를 컴포넌트로 만들어서 재활용할 수 있다.
-2)부모 컴포넌트 안에 여러 컴포넌트를 포함할 수 있다. 이때 부모의 속성을 props 로 전달할 수 있다. 태그를 선언할 때 attr 형태로 전달하면 
+1) 요소를 컴포넌트로 만들어서 재활용할 수 있다.
+2) 부모 컴포넌트 안에 여러 컴포넌트를 포함할 수 있다. 이때 부모의 속성을 props 로 전달할 수 있다. 태그를 선언할 때 attr 형태로 전달하면 
 부모의 data,computed data(method), 도 전달하면 컴포넌트 template에서 바로 사용할 수 있다.
+
+Communicating Events : 
+1) this.$emit('Event's name',args,...) 로 이벤트를 trigger 할 수 있다.
+2) 해당 이벤트 핸들러로 부모의 함수를 추가해서 사용하면 Global 한 변수를 처리 할 수 있다.
