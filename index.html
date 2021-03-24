@@ -9,42 +9,8 @@
 </head>
 <body>
     <div class="nav-bar"></div>
-    <div id="app" class="product">
-        <div class="product-image">
-            <img :src="image" />
-        </div>
-        <div class="product-info">
-            <h1 :class="cb">{{title}}</h1>
-            <p >{{saleNow}}</p>
-            <p>{{`${inventory} 개 남음`}}</p>
-            <p v-if="inventory >10">In Stock</p>
-            <p v-else-if="inventory<=10 && inventory>0">Almost sold out Hurry!!</p>
-            <p v-else :class="{textDeco : !inStock}">Out of Stock</p>
-            <ul>
-                <li v-for="content in details">{{content}}</li>
-            </ul>
-            <div v-for="(variant,index) in variants" 
-                 :key="variant.variantsId"
-                 class="color-box"
-                 :style="{backgroundColor:variant.color}"
-                 @mouseover="changeProduactColor(index)" 
-            ></div>
-            <ul>
-                <option v-for="size in sizes" value="size">{{size}}</option>
-            </ul>
-            <h2>{{`${product}\n ${description}`}}</h2>
-            <div class="d-flex">
-                <button 
-                    @click="addToCart" 
-                    :disabled="!inStock"
-                    :class="classObj"
-                    >Add to Cart</button>
-                <button @click="removeFromCart">remove from Cart</button>
-                <div class="btn-style">
-                    <p>Cart({{cart}})</p>
-                </div>
-            </div>
-        </div>
+    <div id="app">
+        <product :premium ="premium"></product>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="main.js"></script>
